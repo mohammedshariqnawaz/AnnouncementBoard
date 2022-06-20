@@ -2,43 +2,39 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 align-items-center justify-content-center">
-            <h1 class="display-2">Announcement Board</h1>
+            <a href="{{url_for('index')}}">
+                <h1 class="display-2 heading">Announcement Board</h1>
+            </a>
             <form action="{{url_for('index')}}" method="POST">
                 <div class="input-group mb-3 needs-validation">
                     <input type="text" class="form-control" name="announcement_text" placeholder="Pease enter your text here..." required>
-                    <input type="submit" class=" btn btn-outline-info " value="Create">
+                    <input type="submit" class=" btn btn-outline-info" name="submit" value="Create">
                 </div>
             </form>
 
 
             <div class="button-bar">
-                <form action="{{url_for('all')}}" method="post" style="display:inline-block">
-                    <button class="btn btn-outline-info filter-button" name="all" data-toggle="button" aria-pressed="false" type="submit"> Show All</button>
-                </form>
 
-                <form action="{{url_for('today')}}" method="post" style="display:inline-block">
-                    <button class="btn btn-outline-info filter-button" id="today-button" name="today" type="submit"> Today</button>
-                </form>
-
-                <form action="{{url_for('last_seven_days')}}" method="post" style="display:inline-block">
-                    <button class="btn btn-outline-info filter-button" id="seve-day-button" name="last_seven_days" type="submit"> Last 7 days</button>
-                </form>
-
-                <form action="{{url_for('last_thirty_days')}}" method="post" style="display:inline-block">
-                    <button class="btn btn-outline-info filter-button" id="thirty-day-button" name="last_thirty_days" type="submit"> Last 30 days</button>
+                <form action="{{url_for('index')}}" method="post" style="display:inline-block">
+                    <button class="btn btn-outline-info filter-button " id="all-button" name="submit" type="submit" value="all-button"> Show All</button>
+                    <button class="btn btn-outline-info filter-button " id="today-button" name="submit" type="submit" value="today-button"> Today</button>
+                    <button class="btn btn-outline-info filter-button " id="seve-day-button" name="submit" type="submit" value="seve-day-button"> Last 7 days</button>
+                    <button class="btn btn-outline-info filter-button " id="thirty-day-button" name="submit" type="submit" value="thirty-day-button"> Last 30 days</button>
                 </form>
 
             </div>
-
+            <h3>Showing {{text}} results:
+            </h3>
+            <hr>
 
 
             <ul>
                 {% for post in data %}
-                <div class="postDiv">
+                <div class="postDiv ">
                     <li>{{ post.text }}
                         <div class="deleteButton">
-                            <form action="{{url_for('delete', id=post.id)}} " method="post" style="display:inline-block">
-                                <button class="btn btn-danger" name="delete_post " type="submit "> Delete</button>
+                            <form action="{{url_for('delete', id=post.id)}} " method="post " style="display:inline-block ">
+                                <button class="btn btn-danger " name="delete_post " type="submit">Delete</button>
                             </form>
                         </div>
                     </li>

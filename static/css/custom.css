@@ -1,6 +1,13 @@
-h1 {
+.heading {
     text-align: center;
     padding-bottom: 30px;
+    color: #17a2b8;
+}
+
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
 }
 
 .button-bar {
@@ -36,8 +43,4 @@ li {
     width: 100%;
     padding: 0;
     align-items: center;
-    /* position: absolute;
-    top: 65%;
-    right: 10px;
-    display: inline-block; */
 }
